@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using NLayerApp.Core.Repository;
+using NLayerApp.Core.Services;
 using NLayerApp.Core.UnitOfWorks;
 using NLayerApp.Repository;
 using NLayerApp.Repository.Repositories;
 using NLayerApp.Repository.UnitofWorks;
+using NLayerApp.Service.Services;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +22,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); //Eðer generic ise açma kapama iþareti gerekli unutma generic olduðu için böyle
 //builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); //Eðer 1 den fazla tip alsaydý <,> virgüllü olmalýydý.
-//builder.Services.AddScoped(typeof(IService<>), typeof(Service<>)); 
+builder.Services.AddScoped(typeof(IService<>), typeof(Service<>)); 
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 {

@@ -7,7 +7,7 @@ namespace NLayerApp.Core.Repository
         //select
         //===========================================================
         Task<T> GetByIdAsync(int id);
-        IQueryable<T> GetAll(Expression<Func<T, bool>> expression);
+        IQueryable<T> GetAll();
         //Buradaki T entity, bool ise dönüş tipidir x>5 denirse her bir satır için 5 den büyükse true değilse false döner. yani trueları getirir.
         IQueryable<T> Where(Expression<Func<T,bool>> expression);
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);

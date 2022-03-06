@@ -32,7 +32,7 @@ namespace NLayerApp.Repository.Repositories
             return await _dbSet.AnyAsync(expression);
         }
 
-        public IQueryable<T> GetAll(Expression<Func<T, bool>> expression)
+        public IQueryable<T> GetAll()
         {
             //burada asnotracking demek efcore çekmiş olduğu datayı memory alıp tek tek durumlarını izlemesin diyedir. Önemli!
             //10bin kaydı alır tek tek izlerse performansı sıkıntıya sokar.
