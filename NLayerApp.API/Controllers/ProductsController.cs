@@ -9,12 +9,12 @@ namespace NLayerApp.API.Controllers
     //base classında var artık buraya koymaya gerek yok.
     //[Route("api/[controller]")]
     //[ApiController]
-    public class Products : CustomBaseController
+    public class ProductsController : CustomBaseController
     {
         private readonly IMapper _mapper;
         private readonly IProductService _productService;
 
-        public Products(IMapper mapper, IProductService productService)
+        public ProductsController(IMapper mapper, IProductService productService)
         {
             _mapper = mapper;
             _productService = productService;

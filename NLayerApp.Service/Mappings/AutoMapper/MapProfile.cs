@@ -11,6 +11,7 @@ namespace NLayerApp.Service.Mappings.AutoMapper
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<Product, ProductWithCategoryDto>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<Category, CategoryWithProductsDto>().ReverseMap();
             CreateMap<ProductFeature, ProductFeatureDto>().ReverseMap();
             //product gelirse onur productdto ya dönüştür demektir. reverse map demek tam tersini de yapabilirsin demektir.
         }
