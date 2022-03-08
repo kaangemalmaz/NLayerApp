@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using NLayerApp.Core.Repositories;
 using NLayerApp.Core.Repository;
 using NLayerApp.Core.Services;
 using NLayerApp.Core.UnitOfWorks;
@@ -24,7 +25,13 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); //Eðer generic ise açma kapama iþareti gerekli unutma generic olduðu için böyle
 //builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); //Eðer 1 den fazla tip alsaydý <,> virgüllü olmalýydý.
 builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+
 builder.Services.AddAutoMapper(typeof(MapProfile));
+
+
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 {

@@ -12,9 +12,9 @@ namespace NLayerApp.API.Controllers
     public class Products : CustomBaseController
     {
         private readonly IMapper _mapper;
-        private readonly IService<Product> _productService;
+        private readonly IProductService _productService;
 
-        public Products(IMapper mapper, IService<Product> productService)
+        public Products(IMapper mapper, IProductService productService)
         {
             _mapper = mapper;
             _productService = productService;
@@ -59,6 +59,15 @@ namespace NLayerApp.API.Controllers
             var product = await _productService.GetByIdAsync(id);
             await _productService.RemoveAsync(product);
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
+        }
+
+        //YUKARDAKI ILE BUNUN FARKI YUKARDAKILER GENERICDEN GELIYOR 
+        //ASAGIDAKI OZELLESMIS YAPI OLDUĞU ICIN HER TURLU DONUS SAGLANABILIR.
+
+        [HttpGet("ProductWithCategory")]
+        public async Task<IActionResult> ProductWithCategory()
+        {
+            return CreateActionResult(await _productService.GetProductsWithCategory());
         }
 
 
