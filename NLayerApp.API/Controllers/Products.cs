@@ -29,6 +29,7 @@ namespace NLayerApp.API.Controllers
             return CreateActionResult(CustomResponseDto<List<ProductDto>>.Success(200,productsDtos));
         }
 
+        //urldeki idyi alır.
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -40,8 +41,9 @@ namespace NLayerApp.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Save(ProductDto productDto)
         {
-            await _productService.AddAsync(_mapper.Map<Product>(productDto));
-            return CreateActionResult(CustomResponseDto<ProductDto>.Success(201, productDto));
+            var product = await _productService.AddAsync(_mapper.Map<Product>(productDto));
+            var productDtoReturn = _mapper.Map<ProductDto>(product);
+            return CreateActionResult(CustomResponseDto<ProductDto>.Success(201, productDtoReturn));
         }
 
         [HttpPut]
