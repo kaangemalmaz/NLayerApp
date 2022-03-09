@@ -1,6 +1,7 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NLayerApp.API.Extensions.Middlewares;
 using NLayerApp.API.Filters;
 using NLayerApp.Core.Repositories;
 using NLayerApp.Core.Repository;
@@ -73,6 +74,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//run içerdiði için yukarlarda olmasý önemlidir.
+app.UseCustomException();
 
 app.UseAuthorization();
 
