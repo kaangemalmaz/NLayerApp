@@ -1,8 +1,11 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NLayerApp.API.Extensions.Middlewares;
 using NLayerApp.API.Filters;
+using NLayerApp.API.Modules;
 using NLayerApp.Core.Repositories;
 using NLayerApp.Core.Repository;
 using NLayerApp.Core.Services;
@@ -38,19 +41,18 @@ builder.Services.Configure<ApiBehaviorOptions>(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); //Eðer generic ise açma kapama iþareti gerekli unutma generic olduðu için böyle
+//builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+//builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); //Eðer generic ise açma kapama iþareti gerekli unutma generic olduðu için böyle
 //builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); //Eðer 1 den fazla tip alsaydý <,> virgüllü olmalýydý.
-builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
+//builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//builder.Services.AddScoped<IProductService, ProductService>();
+//builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+//builder.Services.AddScoped<ICategoryService, CategoryService>();
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IProductService, ProductService>();
 
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-
+//filterlar için özel olabilir.
 builder.Services.AddAutoMapper(typeof(MapProfile));
-
 //eðer bir filter içinde constr. bir servis geçiyorsan bunu tanýmlamak zorundasýndýr unutma!
 builder.Services.AddScoped(typeof(NotFoundFilter<>));
 
@@ -66,6 +68,8 @@ builder.Services.AddDbContext<AppDbContext>(x =>
 });
 
 
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModule()));
 
 var app = builder.Build();
 
