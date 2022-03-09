@@ -51,6 +51,9 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
+//eðer bir filter içinde constr. bir servis geçiyorsan bunu tanýmlamak zorundasýndýr unutma!
+builder.Services.AddScoped(typeof(NotFoundFilter<>));
+
 
 
 builder.Services.AddDbContext<AppDbContext>(x =>

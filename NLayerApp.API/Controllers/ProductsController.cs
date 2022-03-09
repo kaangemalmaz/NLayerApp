@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using NLayerApp.API.Filters;
 using NLayerApp.Core.Dtos;
 using NLayerApp.Core.Models;
 using NLayerApp.Core.Services;
@@ -29,6 +30,9 @@ namespace NLayerApp.API.Controllers
             return CreateActionResult(CustomResponseDto<List<ProductDto>>.Success(200,productsDtos));
         }
 
+        //burası direk IAsyncFilter i kullandığı için böyle ctor da impl. aldığı için çok kritik.
+        //burada daha hiç actiona girmeden gider. unutma! service de yazılan business a kadar gider geri döner.
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         //urldeki idyi alır.
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
