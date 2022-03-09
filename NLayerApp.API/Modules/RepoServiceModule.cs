@@ -30,6 +30,8 @@ namespace NLayerApp.API.Modules
             //InstancePerLifetimeScope = scope
             //InstancePerDependency = transient
 
+
+            //bu demek oluyor ki verilen assemblylerde repository ile bitenlerin hepsini implemente et.
             builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly).
                 Where(x=>x.Name.EndsWith("Repository")).AsImplementedInterfaces().InstancePerLifetimeScope();
 
