@@ -24,7 +24,7 @@ namespace NLayerApp.API.Extensions.Middlewares
                     var statusCode = exceptionFeature.Error switch
                     {
                         ClientSideException => 400,
-                        _ => 500
+                        _ => 500 //else demektir.
                     };
 
 
