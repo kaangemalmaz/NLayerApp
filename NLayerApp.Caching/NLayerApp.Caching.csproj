@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NLayerApp.Service\NLayerApp.Service.csproj" />
+  </ItemGroup>
+
 </Project>
