@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using NLayerApp.Core.Dtos;
 using NLayerApp.Core.Models;
 using NLayerApp.Core.Services;
+using NLayerApp.Web.Filters;
 
 namespace NLayerApp.Web.Controllers
 {
@@ -50,13 +51,13 @@ namespace NLayerApp.Web.Controllers
         }
 
 
-
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
             var product = await _productService.GetByIdAsync(id);
-            if (product == null)
-                return RedirectToAction("Error", "Home");
+            //if (product == null)
+            //    return RedirectToAction("Error", "Home");
 
             var categories = await _categoryService.GetAll();
             var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
