@@ -1,0 +1,5 @@
+API : https://localhost:7019/swagger/index.html
+API-HTTP : http://localhost:5019
+
+WEB : https://localhost:7219
+WEB-HTTP : http://localhost:5219
