@@ -30,7 +30,7 @@ namespace NLayerApp.Web.Services
         {
             var response = await _httpClient.PostAsJsonAsync<ProductDto>("products", newProduct);
 
-            if(!response.IsSuccessStatusCode) return null;
+            if (!response.IsSuccessStatusCode) return null;
 
             var responseBody = await response.Content.ReadFromJsonAsync<CustomResponseDto<ProductDto>>();
 

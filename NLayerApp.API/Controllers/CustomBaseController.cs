@@ -20,7 +20,7 @@ namespace NLayerApp.API.Controllers
             }
             return new ObjectResult(responseDto)
             {
-                StatusCode=responseDto.StatusCode,
+                StatusCode = responseDto.StatusCode,
             };
 
         }

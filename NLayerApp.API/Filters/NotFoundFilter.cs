@@ -31,7 +31,7 @@ namespace NLayerApp.API.Filters
 
             var id = (int)idValue;
 
-            var anyEntity = await _service.AnyAsync(i=>i.Id == id);
+            var anyEntity = await _service.AnyAsync(i => i.Id == id);
 
             if (anyEntity)
             {

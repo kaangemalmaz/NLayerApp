@@ -1,9 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NLayerApp.Core.Dtos;
 using NLayerApp.Core.Models;
-using NLayerApp.Core.Services;
 using NLayerApp.Web.Filters;
 using NLayerApp.Web.Services;
 
