@@ -5,7 +5,6 @@ using NLayerApp.Core.Repositories;
 using NLayerApp.Core.Repository;
 using NLayerApp.Core.Services;
 using NLayerApp.Core.UnitOfWorks;
-using NLayerApp.Repository.Repositories;
 
 namespace NLayerApp.Service.Services
 {

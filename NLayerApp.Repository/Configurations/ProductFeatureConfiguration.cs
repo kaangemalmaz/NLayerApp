@@ -11,7 +11,7 @@ namespace NLayerApp.Repository.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
 
-            
+
 
             builder.ToTable("ProductFeature");
 

@@ -44,7 +44,7 @@ namespace NLayerApp.Service.Services
 
         public async Task<T> GetByIdAsync(int id)
         {
-            var hasEntity =  await _genericRepository.GetByIdAsync(id);
+            var hasEntity = await _genericRepository.GetByIdAsync(id);
 
             if (hasEntity == null)
             {

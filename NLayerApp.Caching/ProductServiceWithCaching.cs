@@ -28,7 +28,7 @@ namespace NLayerApp.Caching
             //burada CacheProductKey bunda herhangi bir bilgi olup olmadığı bilgisini alacağız çünkü bu trygetvalue bool döner out _ olup olmadığını döner direk olarak bool.
             if (!_memoryCache.TryGetValue(CacheProductKey, out _))
             {
-                
+
                 //eğer yoksa al tüm productları set et demektir bu.
                 //constructor içinde asenkron metod dönemez unutma senkrona dönüştürmek zorundasın
                 _memoryCache.Set(CacheProductKey, _productRepository.GetProductsWithCategory().Result);
